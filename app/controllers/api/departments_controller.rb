@@ -19,7 +19,7 @@ class Api::DepartmentsController < ApplicationController
 
   def index
     begin
-      departments = Department.joins(:projects)
+      departments = Department.includes(:projects)
       departments_with_associations = departments.map do |department|
         department.attributes.merge(
           projects: department.projects
